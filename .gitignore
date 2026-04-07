@@ -1,49 +1,29 @@
-# History files
+# --- R Specific ---
 .Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
 .Rapp.history
 
-# Session Data files
-.RData
-.RDataTmp
+# --- Jupyter/Python Specific ---
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+__pycache__/
 
-# User-specific files
-.Ruserdata
+# --- Data & Privacy (CRITICAL) ---
+# It is best practice to keep raw data off GitHub if it is sensitive
+*.csv
+*.xlsx
+*.rds
+# If you want to share a SPECIFIC clean data file, you can "un-ignore" it like this:
+# !AKI_data_clean.csv
 
-# Example code in package build process
-*-Ex.R
+# --- Output & Temp Files ---
+*.log
+*.pdf
+# Only ignore PNGs if you don't want your Figure 1/2 to show up in the repo
+# *.png 
 
-# Output files from R CMD build
-/*.tar.gz
-
-# Output files from R CMD check
-/*.Rcheck/
-
-# RStudio files
-.Rproj.user/
-
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
-
-# knitr and R markdown default cache directories
-*_cache/
-/cache/
-
-# Temporary files created by R markdown
-*.utf8.md
-*.knit.md
-
-# R Environment Variables
-.Renviron
-
-# pkgdown site
-docs/
-
-# translation temp files
-po/*~
-
-# RStudio Connect folder
-rsconnect/
+# --- System Files ---
+.DS_Store
+Thumbs.db
