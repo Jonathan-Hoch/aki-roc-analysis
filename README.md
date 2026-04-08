@@ -1,159 +1,175 @@
 # AKI ROC Analysis
 
-## Overview
-This repository contains reproducible analyses evaluating the predictive performance of hydration markers for acute kidney injury (AKI) in young vs. older females.
+Reproducible analysis evaluating the predictive performance of hydration markers for acute kidney injury (AKI) risk in young vs. older females.
 
-The analysis focuses on diagnostic accuracy using ROC-based methods to compare biomarkers across age groups and conditions.
+---
+
+## Overview
+
+This repository contains all code needed to reproduce the statistics, figures, and paper-ready summary reported in:
+
+> *Predictive Value of Hydration Markers for Acute Kidney Injury Risk in Young vs. Older Females*
+
+Diagnostic accuracy was assessed using ROC-based methods, comparing five hydration biomarkers across age groups and conditions.
 
 ---
 
 ## Objectives
 
-### Aim 1 — Between-Group Diagnostic Performance
-Evaluate whether hydration markers differ in their ability to predict AKI risk between:
-- Young females (YF)
-- Older females (OF)
+### Aim 1 — Between-group diagnostic performance
 
-Metrics:
-- Area Under the Curve (AUC)
-- 95% Confidence Intervals
-- Youden’s J index (optimal threshold)
-- Unpaired DeLong test for group comparisons
+Evaluate whether hydration markers differ in their ability to predict AKI risk between young females (YF) and older females (OF).
 
----
+Reported metrics: AUC, 95% CI (DeLong method), Youden's J index, optimal threshold, and unpaired DeLong test for group comparisons.
 
-### Aim 2 — Within-Subject Marker Comparison
-Compare:
-- Spot USG  
-vs.  
-- 24-hour USG  
+### Aim 2 — Within-subject marker comparison
 
-Using:
-- Paired ROC curves  
-- Paired DeLong test  
+Compare spot USG vs. 24-hour USG on the same participants using paired ROC curves and a paired DeLong test.
 
----
+### Table 1 — Participant characteristics
 
-### Table 1 — Participant Characteristics
-Descriptive and inferential statistics for demographics:
-- Median [IQR]
-- Mann–Whitney U test
-- Rank-biserial correlation effect size
+Descriptive statistics (median [IQR]), Mann–Whitney U test, and rank-biserial correlation effect size for age and BMI.
 
 ---
 
 ## Repository Structure
-├── aki_roc_analysis.ipynb # Main analysis notebook
 
+```
+├── aki_roc_analysis.ipynb   # Main analysis notebook
+├── requirements.R           # One-step package installer
+├── AKI_data.csv             # Input data (see Data Requirements below)
+├── figures/
+│   ├── AUCbyAge Apr8.png    # Figure 1 — AUC dot plot by age group
+│   └── ROC.png              # Figure 2 — Paired ROC curves
 ├── .gitignore
-
-├── README.md
+└── README.md
+```
 
 ---
 
 ## Data Requirements
 
-Place the dataset in the root directory:
+Place `AKI_data.csv` in the root directory before running the notebook.
 
-### Required Columns
+> **Note:** The raw data file is not included in this repository. Please contact the corresponding author to request access.
 
-- Age Group
-- ID
-- Condition
-- IGFBP7*TIMP-2 ((ng/mL)^2)/1000
-- AKI Risk
-- percent change weight
-- Spot USG
-- 24hr USG
-- 24hr Osmo
-- Plasma Osmo
-- Screening BMI
-- Age
+### Required columns
 
----
+| Column | Description |
+|---|---|
+| `Age Group` | `Young` or `Older` |
+| `ID` | Participant identifier |
+| `Condition` | Experimental condition |
+| `IGFBP7*TIMP-2 ((ng/mL)^2)/1000` | Kidney stress biomarker |
+| `AKI Risk` | `Yes` / `No` (outcome variable) |
+| `percent change weight` | % body mass change |
+| `Spot USG` | Spot urine specific gravity |
+| `24hr USG` | 24-hour urine specific gravity |
+| `24hr Osmo` | 24-hour urine osmolality |
+| `Plasma Osmo` | Plasma osmolality |
+| `Screening BMI` | BMI at screening |
+| `Age` | Age in years |
 
-## Missing Data Handling
+### Missing data handling
 
-Participants missing AKI Risk:
-- Excluded from ROC analyses  
-- Included in demographic analyses  
+Two participants were missing `AKI Risk` values and are handled as follows:
+- **Excluded** from all ROC analyses
+- **Included** in Table 1 demographic analyses
 
-The purpose was to preserve statistical validity while maximizing descriptive sample size.
-
----
-
-## Methods Summary
-
-### ROC Analysis
-- Implemented using `pROC`
-- AUC with DeLong confidence intervals
-- Optimal thresholds via Youden’s J
-
-### Statistical Testing
-- Unpaired DeLong test → between-group comparisons  
-- Paired DeLong test → within-subject comparisons  
-- Mann–Whitney U test → demographic comparisons  
-
----
-
-## Figures Generated
-
-<table style="width:100%">
-  <tr>
-    <th style="text-align:center">Figure 1: AUC by Age Group</th>
-    <th style="text-align:center">Figure 2: Paired ROC Analysis</th>
-  </tr>
-  <tr>
-    <td><img src="Figures/AUCbyAge Apr8.png" width="100%"></td>
-    <td><img src="Figures/ROC.png" width="100%"></td>
-  </tr>
-</table>
----
-
-## Requirements
-
-- R ≥ 4.0  
-- Jupyter Notebook with IRkernel  
-
-### R Packages
-- pROC
-- ggplot2
-- dplyr
-- zoo
-- coin
-- rstatix
+This preserves statistical validity while maximising descriptive sample size.
 
 ---
 
 ## Quick Start
 
 ### 1. Clone the repository
-```
+
+```bash
 git clone https://github.com/Jonathan-Hoch/aki-roc-analysis.git
+cd aki-roc-analysis
 ```
 
-### 2. Install dependencies
-Run in R:
+### 2. Install R dependencies
 
 ```r
 source("requirements.R")
 ```
 
-### 3. Add dataset
-AKI_data.csv
+### 3. Add the dataset
 
-### 4. Run analysis
-Open and execute:
-aki_roc_analysis.ipynb
+Place `AKI_data.csv` in the root directory (see Data Requirements above).
 
-Run all cells from top to bottom.
+### 4. Run the analysis
 
-### Limitations
-Small sample size limits statistical power
-ROC comparisons may not detect modest differences
-Findings should be interpreted as exploratory
+Open `aki_roc_analysis.ipynb` and run all cells from top to bottom.  
+Cell 11 prints a complete paper-ready summary of all reported statistics.
 
-### Notes
-This repository does not include raw participant data
+---
 
-Ensure compliance with IRB and data-sharing policies before adding datasets
+## Methods Summary
+
+### ROC analysis
+
+- Implemented with the `pROC` package
+- AUC estimated with DeLong 95% confidence intervals
+- Optimal thresholds identified via Youden's J index (sensitivity + specificity − 1)
+- ROC direction determined independently per subgroup (`direction = "auto"`), consistent with maximising AUC within each group
+
+### Statistical tests
+
+| Test | Purpose |
+|---|---|
+| Unpaired DeLong | Between-group AUC comparisons (Aim 1) |
+| Paired DeLong | Within-subject Spot vs. 24-hr USG comparison (Aim 2) |
+| Mann–Whitney U | Demographic comparisons (Table 1) |
+
+---
+
+## Figures
+
+<table>
+  <tr>
+    <th align="center">Figure 1 — AUC by age group</th>
+    <th align="center">Figure 2 — Paired ROC curves</th>
+  </tr>
+  <tr>
+    <td><img src="figures/AUCbyAge Apr8.png" width="100%"></td>
+    <td><img src="figures/ROC.png" width="100%"></td>
+  </tr>
+</table>
+
+---
+
+## Requirements
+
+- R ≥ 4.0
+- Jupyter Notebook with [IRkernel](https://irkernel.github.io/)
+
+| Package | Purpose |
+|---|---|
+| `pROC` | ROC analysis, AUC, DeLong tests |
+| `ggplot2` | Figures |
+| `dplyr` | Data manipulation |
+| `zoo` | Rolling statistics |
+| `coin` | Permutation-based inference |
+| `rstatix` | Tidy statistical tests |
+
+---
+
+## Limitations
+
+- Small sample size limits statistical power; findings should be interpreted as exploratory
+- ROC comparisons may not detect modest differences between groups
+- Results reflect a specific exercise/hydration protocol and may not generalise broadly
+
+---
+
+## Citation
+
+If you use this code, please cite the associated manuscript (citation to be added upon publication).
+
+---
+
+## Contact
+
+Jonathan Hoch — [GitHub](https://github.com/Jonathan-Hoch)
