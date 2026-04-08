@@ -133,8 +133,8 @@ Cell 11 prints a complete paper-ready summary of all reported statistics.
     <th align="center">Figure 2 — Paired ROC curves</th>
   </tr>
   <tr>
-    <td><img src="figures/AUCbyAge Apr8.png" width="100%"></td>
-    <td><img src="figures/ROC.png" width="100%"></td>
+    <td><img src="figures/AUCbyAge.png" width="80%"></td>
+    <td><img src="figures/ROC.png" width="80%"></td>
   </tr>
 </table>
 
