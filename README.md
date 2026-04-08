@@ -104,7 +104,7 @@ The purpose was to preserve statistical validity while maximizing descriptive sa
     <th style="text-align:center">Figure 2: Paired ROC Analysis</th>
   </tr>
   <tr>
-    <td><img src="Figures/ROC Apr8.png.png" width="100%"></td>
+    <td><img src="Figures/ROC Apr8.png" width="100%"></td>
     <td><img src="Figures/ROC.png" width="100%"></td>
   </tr>
 </table>
