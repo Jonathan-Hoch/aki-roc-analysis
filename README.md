@@ -123,20 +123,14 @@ Cell 11 prints a complete paper-ready summary of all reported statistics.
 | Paired DeLong | Within-subject Spot vs. 24-hr USG comparison (Aim 2) |
 | Mann–Whitney U | Demographic comparisons (Table 1) |
 
----
-
 ## Figures
 
-<table>
-  <tr>
-    <th align="center">Figure 1 — AUC by age group</th>
-    <th align="center">Figure 2 — Paired ROC curves</th>
-  </tr>
-  <tr>
-    <td><img src="figures/AUCbyAge.png" width="80%"></td>
-    <td><img src="figures/ROC.png" width="80%"></td>
-  </tr>
-</table>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/962eed4e-3a6b-4878-adca-fcbe3cd749fa" width="48%" />
+  <img src="https://github.com/user-attachments/assets/8fd2d3e9-c6c5-4ee0-b006-9c2235494cbb" width="48%" />
+  <br />
+  <ins><b>Figure 1:</b> AUC by age group</ins> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <ins><b>Figure 2:</b> Paired ROC curves</ins>
+</p>
 
 ---
 
