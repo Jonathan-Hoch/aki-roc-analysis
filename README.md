@@ -76,7 +76,7 @@ Two participants were missing `AKI Risk` values and are handled as follows:
 - **Excluded** from all ROC analyses
 - **Included** in Table 1 demographic analyses
 
-This preserves statistical validity while maximising descriptive sample size.
+Completed to preserve statistical validity while maximizing descriptive sample size.
 
 ---
 
@@ -101,7 +101,7 @@ Place `AKI_data.csv` in the root directory (see Data Requirements above).
 
 ### 4. Run the analysis
 
-Open `aki_roc_analysis.ipynb` and run all cells from top to bottom.  
+Open `aki_analysis.ipynb` and run all cells from top to bottom.  
 Cell 11 prints a complete paper-ready summary of all reported statistics.
 
 ---
@@ -113,7 +113,7 @@ Cell 11 prints a complete paper-ready summary of all reported statistics.
 - Implemented with the `pROC` package
 - AUC estimated with DeLong 95% confidence intervals
 - Optimal thresholds identified via Youden's J index (sensitivity + specificity − 1)
-- ROC direction determined independently per subgroup (`direction = "auto"`), consistent with maximising AUC within each group
+- ROC direction determined independently per subgroup (`direction = "auto"`), consistent with maximizing AUC within each group
 
 ### Statistical tests
 
